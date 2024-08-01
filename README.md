@@ -2,6 +2,15 @@
 
 This Flask web application helps users track their job applications, analyze the status of their applications, and calculate the acceptance score based on their CV and job descriptions. The app uses PyPDF2 for extracting text from PDF files and Scikit-learn for calculating cosine similarity between the CV and job descriptions.
 
+## What Problem This Project Solves
+
+Job seekers often apply to multiple positions across different companies and platforms, making it challenging to keep track of all their applications. This project provides a solution to:
+
+- Organize Job Applications: Helps users manage and organize their job applications in one place.
+- Monitor Application Status: Allows users to update and monitor the status of their applications.
+- Analyze Job Search Efforts: Provides analytical insights into the types of jobs applied for, platforms used, and the overall status of applications.
+- Calculate Acceptance Probability: Estimates the acceptance score by comparing the CV with job descriptions, aiding users in identifying job matches.
+
 ## Features
 
 - Add job applications with detailed information.
