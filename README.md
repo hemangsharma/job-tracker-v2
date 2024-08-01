@@ -83,10 +83,21 @@ This Flask web application helps users track their job applications, analyze the
 
 ## Project Structure
 
-- `app.py`: Main Flask application file.
-- `templates/`: Directory containing HTML templates.
-- `static/`: Directory for static files (CSS, JS).
-- `data/`: Directory for storing application data (CSV files, CV PDF).
+
+| File/Folder         | Description                                       |
+|---------------------|---------------------------------------------------|
+| `app.py`            | Main Flask application file                       |
+| `requirements.txt`  | List of dependencies                              |
+| `templates/`        | Directory containing HTML templates               |
+| `base.html`         | Base HTML template                                |
+| `add.html`          | Template for adding job applications              |
+| `view.html`         | Template for viewing job applications             |
+| `analysis.html`     | Template for analyzing job applications           |
+| `update.html`       | Template for updating job applications            |
+| `data/`             | Directory for storing application data            |
+| `applications.csv`  | CSV file storing job application details          |
+| `cv.pdf`            | PDF file of the user's CV                         |
+
 
 ## License
 
@@ -95,3 +106,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contributing
 
 If you would like to contribute to this project, please create a pull request with a detailed description of your changes.
+
+
+
