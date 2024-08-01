@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Job Application Analysis</h2>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Status Distribution</h3>
+            <canvas id="statusChart"></canvas>
+        </div>
+        <div class="col-md-6">
+            <h3>Job Types Distribution</h3>
+            <canvas id="jobTypeChart"></canvas>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h3>Platforms Used</h3>
+            <canvas id="platformChart"></canvas>
+        </div>
+        <div class="col-md-6">
+            <h3>Acceptance Score Distribution</h3>
+            <canvas id="acceptanceScoreChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const statusCounts = {{ status_counts | tojson }};
+    const jobTypes = {{ job_types | tojson }};
+    const platforms = {{ platforms | tojson }};
+    const acceptanceScores = {{ acceptance_scores | tojson }};
+
+    const statusCtx = document.getElementById('statusChart').getContext('2d');
+    const jobTypeCtx = document.getElementById('jobTypeChart').getContext('2d');
+    const platformCtx = document.getElementById('platformChart').getContext('2d');
+    const acceptanceScoreCtx = document.getElementById('acceptanceScoreChart').getContext('2d');
+
+    new Chart(statusCtx, {
+        type: 'pie',
+        data: {
+            labels: Object.keys(statusCounts),
+            datasets: [{
+                data: Object.values(statusCounts),
+                backgroundColor: ['#007bff', '#ffc107', '#28a745', '#dc3545', '#6c757d']
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    new Chart(jobTypeCtx, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(jobTypes),
+            datasets: [{
+                data: Object.values(jobTypes),
+                backgroundColor: '#007bff'
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    new Chart(platformCtx, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(platforms),
+            datasets: [{
+                data: Object.values(platforms),
+                backgroundColor: '#007bff'
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    new Chart(acceptanceScoreCtx, {
+        type: 'line',
+        data: {
+            labels: acceptanceScores.map((_, index) => index + 1),
+            datasets: [{
+                data: acceptanceScores,
+                backgroundColor: '#007bff',
+                borderColor: '#007bff',
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Add Job Application</h2>
+<form action="{{ url_for('add') }}" method="POST">
+    <div class="form-group">
+        <label for="company">Company Name</label>
+        <input type="text" class="form-control" id="company" name="company" required>
+    </div>
+    <div class="form-group">
+        <label for="position">Position Title</label>
+        <input type="text" class="form-control" id="position" name="position" required>
+    </div>
+    <div class="form-group">
+        <label for="job_description">Job Description</label>
+        <textarea class="form-control" id="job_description" name="job_description" rows="4" required></textarea>
+    </div>    
+    <div class="form-group">
+        <label for="platform">Platform Used to Apply</label>
+        <input type="text" class="form-control" id="platform" name="platform" required>
+    </div>
+    <div class="form-group">
+        <label for="job_type">Job Type</label>
+        <select class="form-control" id="job_type" name="job_type" required>
+            <option value="Full Time">Full Time</option>
+            <option value="Temporary Part Time">Temporary Part Time</option>
+            <option value="Permanent Part Time">Permanent Part Time</option>
+            <option value="Casual">Casual</option>
+            <option value="Contract">Contract</option>
+            <option value="Other">Other</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="wage_type">Wage/Salary Type</label>
+        <input type="text" class="form-control" id="wage_type" name="wage_type" required>
+    </div>
+    <div class="form-group">
+        <label for="application_date">Application Date</label>
+        <input type="date" class="form-control" id="application_date" name="application_date" required>
+    </div>
+    <div class="form-group">
+        <label for="status">Status</label>
+        <select class="form-control" id="status" name="status" required>
+            <option value="Applied">Applied</option>
+            <option value="Under Review">Under Review</option>
+            <option value="Interview Scheduled">Interview Scheduled</option>
+            <option value="Offer Extended">Offer Extended</option>
+            <option value="Rejected">Rejected</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Application</button>
+</form>
+{% endblock %}

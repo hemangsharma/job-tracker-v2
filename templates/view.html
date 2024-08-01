@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>View Job Applications</h2>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Company Name</th>
+                <th>Position Title</th>
+                <th>Platform Used to Apply</th>
+                <th>Job Type</th>
+                <th>Wage/Salary Type</th>
+                <th>Application Date</th>
+                <th>Status</th>
+                <th>Interview/Test Date</th>
+                <th>Acceptance Score</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in applications %}
+            <tr>
+                <td>{{ application['Date'] }}</td>
+                <td>{{ application['Company Name'] }}</td>
+                <td>{{ application['Position Title'] }}</td>
+                <td>{{ application['Platform Used to Apply'] }}</td>
+                <td>{{ application['Job Type'] }}</td>
+                <td>{{ application['Wage/Salary Type'] }}</td>
+                <td>{{ application['Application Date'] }}</td>
+                <td>{{ application['Status'] }}</td>
+                <td>{{ application.get('Interview/Test Date', '') }}</td>
+                <td>{{ application.get('Acceptance Score', 'N/A') }}</td>
+                <td>
+                    <a href="{{ url_for('update', index=loop.index0) }}" class="btn btn-warning btn-sm">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

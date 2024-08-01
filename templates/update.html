@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Update Job Application</h2>
+<form action="{{ url_for('update', index=index) }}" method="POST">
+    <div class="form-group">
+        <label for="company">Company Name</label>
+        <input type="text" class="form-control" id="company" name="company" value="{{ application['Company Name'] }}" required>
+    </div>
+    <div class="form-group">
+        <label for="position">Position Title</label>
+        <input type="text" class="form-control" id="position" name="position" value="{{ application['Position Title'] }}" required>
+    </div>
+    <div class="form-group">
+        <label for="platform">Platform Used to Apply</label>
+        <input type="text" class="form-control" id="platform" name="platform" value="{{ application['Platform Used to Apply'] }}" required>
+    </div>
+    <div class="form-group">
+        <label for="job_type">Job Type</label>
+        <select class="form-control" id="job_type" name="job_type" required>
+            <option value="Full Time" {% if application['Job Type'] == 'Full Time' %}selected{% endif %}>Full Time</option>
+            <option value="Temporary Part Time" {% if application['Job Type'] == 'Temporary Part Time' %}selected{% endif %}>Temporary Part Time</option>
+            <option value="Permanent Part Time" {% if application['Job Type'] == 'Permanent Part Time' %}selected{% endif %}>Permanent Part Time</option>
+            <option value="Casual" {% if application['Job Type'] == 'Casual' %}selected{% endif %}>Casual</option>
+            <option value="Contract" {% if application['Job Type'] == 'Contract' %}selected{% endif %}>Contract</option>
+            <option value="Other" {% if application['Job Type'] == 'Other' %}selected{% endif %}>Other</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="wage_type">Wage/Salary Type</label>
+        <input type="text" class="form-control" id="wage_type" name="wage_type" value="{{ application['Wage/Salary Type'] }}" required>
+    </div>
+    <div class="form-group">
+        <label for="application_date">Application Date</label>
+        <input type="date" class="form-control" id="application_date" name="application_date" value="{{ application['Application Date'] }}" required>
+    </div>
+    <div class="form-group">
+        <label for="status">Status</label>
+        <select class="form-control" id="status" name="status" required>
+            <option value="Applied" {% if application['Status'] == 'Applied' %}selected{% endif %}>Applied</option>
+            <option value="Under Review" {% if application['Status'] == 'Under Review' %}selected{% endif %}>Under Review</option>
+            <option value="Interview Scheduled" {% if application['Status'] == 'Interview Scheduled' %}selected{% endif %}>Interview Scheduled</option>
+            <option value="Offer Extended" {% if application['Status'] == 'Offer Extended' %}selected{% endif %}>Offer Extended</option>
+            <option value="Rejected" {% if application['Status'] == 'Rejected' %}selected{% endif %}>Rejected</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="acceptance_score">Acceptance Score</label>
+        <input type="number" class="form-control" id="acceptance_score" name="acceptance_score" value="{{ application.get('Acceptance Score', '') }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Update Application</button>
+</form>
+{% endblock %}
